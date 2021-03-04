@@ -13,25 +13,25 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                        <form (ngSubmit)="insertPeopleData()">
+                        <form (ngSubmit)="insertPeopleData()" novalidate>
                             <div class="container">
                                 <div class="form-group">
                                     <label> First name: </label>
-                                    <input type="text" class="form-control" id="firstName" [(ngModel)]="person.firstName" name="firstName">
+                                    <input type="text" required #control="ngModel" class="form-control" id="firstName" [(ngModel)]="person.firstName" name="firstName">
                                 </div>
                                 <div class="form-group">
                                     <label> Last name: </label>
-                                    <input type="text" class="form-control" id="lastName" [(ngModel)]="person.lastName" name="lastName">
+                                    <input ytype="text" required #control="ngModel" class="form-control" id="lastName" [(ngModel)]="person.lastName" name="lastName">
                                 </div>
                     
                                 <div class="form-group">
                                     <label> Email: </label>
-                                    <input type="text" class="form-control" id="email" [(ngModel)]="person.email" name="email">
+                                    <input type="text" required #control="ngModel" class="form-control" id="email" [(ngModel)]="person.email" name="email">
                                 </div>
                 
                                 <div class="form-group">
                                     <label> Phone: </label>
-                                    <input type="text" class="form-control" id="phone" [(ngModel)]="person.phone" name="phone">
+                                    <input type="text" required #control="ngModel" class="form-control" id="phone" [(ngModel)]="person.phone" name="phone">
                                 </div>
                             </div>
                         </form>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Person } from 'src/app/models/person';
 import { PersonService } from 'src/app/service/person.service';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-person-create',
@@ -11,7 +12,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PersonCreateComponent implements OnInit {
 
-  
+  data;
   person = new Person();
   @Output('getPoepleData') refresh: EventEmitter<any> = new EventEmitter()
   constructor(private personService: PersonService, config: NgbModalConfig, private modalService: NgbModal) { 
@@ -26,13 +27,15 @@ export class PersonCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  insertPeopleData()
+  insertPeopleData(regForm: NgForm)
   {
+    if (regForm.valid)
+      {
+      this.data = regForm.value;
+      }
     this.personService.insertPeopleData(this.person).subscribe(res => {
       this.refresh.emit();
     })
   }
-
-  
 
 }
