@@ -19,8 +19,8 @@
                 <td> {{ p.lastName }}</td>
                 <td> {{ p.email }}</td>
                 <td> {{ p.phone }}</td>
-                <td><app-person-update></app-person-update></td>
-                <td><app-person-delete></app-person-delete></td>
+                <td><app-person-update [person]="p"></app-person-update></td>
+                <td><app-person-delete [person]="p"></app-person-delete></td>
             </tr>
         </tbody>
     </table>

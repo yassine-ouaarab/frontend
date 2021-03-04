@@ -25,10 +25,4 @@ export class PersonComponent implements OnInit {
     });
   }
 
-  deletePeopleData(id)
-  {
-    this.personService.deletePeopleData(id).subscribe(res => {
-      this.getPeopleData();
-    })
-  }
 }

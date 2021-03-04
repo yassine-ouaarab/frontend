@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Person } from 'src/app/models/person';
 import { PersonService } from 'src/app/service/person.service';
 
@@ -9,24 +9,20 @@ import { PersonService } from 'src/app/service/person.service';
 })
 export class PersonDeleteComponent implements OnInit {
 
-  person = new Person();
-  people: any;
+
+  @Input () person: Person;
+  @Input('getPoepleData') refresh: EventEmitter<any> = new EventEmitter()
   constructor(private personService:PersonService) { }
 
   ngOnInit(): void {
   }
 
-  getPeopleData()
+  delete()
   {
-    this.personService.getPeopleData().subscribe(res => {
-      this.people = res;
-    });
-  }
-
-  deletePeopleData(id)
-  {
-    this.personService.deletePeopleData(id).subscribe(res => {
-      this.getPeopleData();
+    this.personService.deletePeopleData(this.person.id).subscribe(res => {
+      this.refresh.emit();
     })
   }
+  
 }
+

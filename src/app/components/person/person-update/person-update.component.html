@@ -1,48 +1,45 @@
 <div class="col-md-12">
-    <a id="modal-431007" href="#modal-container-431007" role="button" class="btn btn-warning" data-toggle="modal">Update</a><br><br><br>    
-    <div class="modal fade" id="modal-container-431007" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">
-                        Mise à jour de la personne
-                    </h5> 
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <form>
-                    <div class="container">
-                        
-                        <div class="form-group">
-                            <label> First name: </label>
-                            <input type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName">
-                        </div>
-                        <div class="form-group">
-                            <label> Last name: </label>
-                            <input type="text" class="form-control" [(ngModel)]="person.lastName" name="lastName">
-                        </div>
-            
-                        <div class="form-group">
-                            <label> Email: </label>
-                            <input type="text" class="form-control" [(ngModel)]="person.email" name="email">
-                        </div>
-
-                        <div class="form-group">
-                            <label> Phone: </label>
-                            <input type="text" class="form-control" [(ngModel)]="person.phone" name="phone">
-                        </div>
-                        <div style="text-align: center">
-                            <a (click)="updatePeopleData(person.id, person)" class="btn btn-warning">Update</a>
-                        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Mise à jour de la personne</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                </form>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
+                    <div class="modal-body">
+                        <form #f="ngForm" (ngSubmit)="updatePeopleData()" >
+                            <div class="container">
+                                <div class="form-group">
+                                    <label> First name: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName">
+                                </div>
+                                <div class="form-group">
+                                    <label> Last name: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="person.lastName" name="lastName">
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label> Email: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="person.email" name="email">
+                                </div>
+                
+                                <div class="form-group">
+                                    <label> Phone: </label>
+                                    <input type="text" class="form-control" [(ngModel)]="person.phone" name="phone">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-warning" (click)="c(update())">Update</button>
+                    </div>
+                  </ng-template>
+                  <button class="btn btn-warning" (click)="open(content)">Update</button>
             </div>
         </div>
-    </div>
+    </div> 
 </div>
+
